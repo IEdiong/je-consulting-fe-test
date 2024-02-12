@@ -4,7 +4,6 @@ import Home from '@/app/page';
 describe('Home page', () => {
   // 1. Should render a search form with a search input field
   // 2. Search input should take focus on page load
-  // 3. 2 seconds after the user types in a search query a component with a list of recent searches should be displayed
 
   it('Should render a search form with a nested search input field', () => {
     // Arrange
