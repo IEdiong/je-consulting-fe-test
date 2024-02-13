@@ -44,11 +44,29 @@ export default function SearchForm({
         Search
       </button>
       {showRecentSearch && (
-        <ol data-testid='recent-searches'>
-          <li>Captain America</li>
-          <li>Avengers</li>
+        <ol
+          data-testid='recent-searches'
+          className='absolute top-20 p-2 rounded-3xl bg-white w-[700px] flex flex-col gap-y-1'
+        >
+          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
+            Captain America
+          </li>
+          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
+            Avengers
+          </li>
+          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
+            Avengers
+          </li>
+          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
+            Avengers
+          </li>
+          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
+            Avengers
+          </li>
         </ol>
       )}
     </form>
   );
 }
+
+// TODO: 1. Add an animation to the list appearance
