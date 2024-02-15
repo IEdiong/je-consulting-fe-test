@@ -12,6 +12,10 @@ export default function SearchForm({
   const [showRecentSearch, setShowRecentSearch] = useState(false);
   const router = useRouter();
 
+  const recentSearchQueries = JSON.parse(
+    localStorage.getItem('recentSearches') || '[]'
+  );
+
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const value = e.currentTarget.value;
@@ -27,7 +31,28 @@ export default function SearchForm({
       return;
     }
 
+    storeRecentSearch(searchQuery);
+
     router.push(`/movies/?s=${searchQuery}`);
+  };
+
+  const storeRecentSearch = (searchQuery: string) => {
+    let recentSearches: string[] = JSON.parse(
+      localStorage.getItem('recentSearches') || '[]'
+    );
+
+    // Remove searchQuery if it already exists in recentSearches
+    recentSearches = recentSearches.filter((query) => query !== searchQuery);
+
+    // Add searchQuery to the end of recentSearches
+    recentSearches.push(searchQuery);
+
+    // Ensure recentSearches array length doesn't exceed 4
+    if (recentSearches.length > 4) {
+      recentSearches.shift();
+    }
+
+    localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
   };
 
   return (
@@ -46,26 +71,20 @@ export default function SearchForm({
       >
         Search
       </button>
-      {showRecentSearch && (
+      {showRecentSearch && recentSearchQueries.length > 0 && (
         <ol
           data-testid='recent-searches'
           className='absolute top-20 p-2 rounded-3xl bg-white w-[700px] flex flex-col gap-y-1'
         >
-          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
-            Captain America
-          </li>
-          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
-            Avengers
-          </li>
-          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
-            Avengers
-          </li>
-          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
-            Avengers
-          </li>
-          <li className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'>
-            Avengers
-          </li>
+          {recentSearchQueries &&
+            recentSearchQueries.map((query: string, idx: number) => (
+              <li
+                key={idx}
+                className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'
+              >
+                {query}
+              </li>
+            ))}
         </ol>
       )}
     </form>
