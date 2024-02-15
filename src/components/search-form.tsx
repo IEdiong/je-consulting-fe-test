@@ -13,7 +13,7 @@ export default function SearchForm({
   const router = useRouter();
 
   const recentSearchQueries = JSON.parse(
-    localStorage.getItem('recentSearches') || '[]'
+    window.localStorage.getItem('recentSearches') || '[]'
   );
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -38,7 +38,7 @@ export default function SearchForm({
 
   const storeRecentSearch = (searchQuery: string) => {
     let recentSearches: string[] = JSON.parse(
-      localStorage.getItem('recentSearches') || '[]'
+      window.localStorage.getItem('recentSearches') || '[]'
     );
 
     // Remove searchQuery if it already exists in recentSearches
