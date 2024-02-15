@@ -47,6 +47,7 @@ export default function MovieList() {
           moviesData.map((movie: Movie) => (
             <MovieCard
               key={movie.imdbID}
+              id={movie.imdbID}
               title={movie.Title}
               year={movie.Year}
               type={movie.Type}

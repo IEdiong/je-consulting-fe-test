@@ -1,18 +1,29 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 type IMovieCard = {
+  id: string;
   title: string;
   year: string;
   type: string;
   imgUrl: string;
 };
 
-export default function MovieCard({ title, year, type, imgUrl }: IMovieCard) {
+export default function MovieCard({
+  id,
+  title,
+  year,
+  type,
+  imgUrl,
+}: IMovieCard) {
   return (
-    <div className='w-full bg-white rounded-xl overflow-hidden'>
-      <div>
+    <Link
+      href={`/movies/${id}`}
+      className='w-full bg-white rounded-xl overflow-hidden'
+    >
+      <div className='h-[444px] overflow-hidden relative'>
         <Image
-          className='object-fill w-full'
+          className='object-cover h-full w-full'
           src={imgUrl === 'N/A' ? 'https://placehold.co/300x444/png' : imgUrl}
           alt='movie'
           width={300}
@@ -27,6 +38,6 @@ export default function MovieCard({ title, year, type, imgUrl }: IMovieCard) {
           {type}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }
