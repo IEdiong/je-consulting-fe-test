@@ -11,10 +11,14 @@ export default function SearchForm({
   const [searchQuery, setSearchQuery] = useState('');
   const [showRecentSearch, setShowRecentSearch] = useState(false);
   const router = useRouter();
+  let recentSearchQueries: [] = [];
 
-  const recentSearchQueries = JSON.parse(
-    window.localStorage.getItem('recentSearches') || '[]'
-  );
+  if (typeof window !== 'undefined') {
+    // Your client-side code that uses window goes here
+    recentSearchQueries = JSON.parse(
+      window.localStorage.getItem('recentSearches') || '[]'
+    );
+  }
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -37,9 +41,12 @@ export default function SearchForm({
   };
 
   const storeRecentSearch = (searchQuery: string) => {
-    let recentSearches: string[] = JSON.parse(
-      window.localStorage.getItem('recentSearches') || '[]'
-    );
+    let recentSearches: string[] = [];
+    if (typeof window !== 'undefined') {
+      recentSearches = JSON.parse(
+        window.localStorage.getItem('recentSearches') || '[]'
+      );
+    }
 
     // Remove searchQuery if it already exists in recentSearches
     recentSearches = recentSearches.filter((query) => query !== searchQuery);
