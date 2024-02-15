@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 async function getData(id: string) {
   const res = await fetch(
-    `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/movies/${id}`
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.

@@ -14,7 +14,7 @@ export default function MovieList() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/?${searchQuery}`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/movies?${searchQuery}`
         );
         const data = await response.json();
         if (data.Response === 'False') {
