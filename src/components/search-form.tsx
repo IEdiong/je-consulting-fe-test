@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function SearchForm({
   hasFocus = false,
@@ -84,12 +85,17 @@ export default function SearchForm({
           className='absolute top-20 p-2 rounded-3xl bg-white w-[700px] flex flex-col gap-y-1'
         >
           {recentSearchQueries &&
-            recentSearchQueries.map((query: string, idx: number) => (
+            recentSearchQueries.reverse().map((query: string, idx: number) => (
               <li
                 key={idx}
                 className='px-4 py-2 hover:bg-yellow-100 rounded-3xl transition-all ease-in'
               >
-                {query}
+                <Link
+                  href={`/movies/?s=${query}`}
+                  className='w-full h-full block'
+                >
+                  {query}
+                </Link>
               </li>
             ))}
         </ol>
