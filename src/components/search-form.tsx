@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SearchForm({
   hasFocus = false,
@@ -9,6 +10,7 @@ export default function SearchForm({
 }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showRecentSearch, setShowRecentSearch] = useState(false);
+  const router = useRouter();
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -24,7 +26,8 @@ export default function SearchForm({
     if (searchQuery === '') {
       return;
     }
-    alert(`Request sent to the backend`);
+
+    router.push(`/movies/?s=${searchQuery}`);
   };
 
   return (
