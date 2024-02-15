@@ -22,7 +22,7 @@ export default function MovieList() {
         }
         const { Search: search } = data;
         setMoviesData(search);
-        console.log(data);
+        // console.log(data);
       } catch (error: any) {
         console.log(error);
         setError(error);
@@ -32,7 +32,7 @@ export default function MovieList() {
     };
 
     getData();
-  }, []);
+  }, [searchQuery]);
 
   return (
     <main className='flex min-h-screen flex-col gap-y-3 justify-start px-4 sm:px-10 max-w-[1280px] mx-auto'>

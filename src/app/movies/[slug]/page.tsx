@@ -1,4 +1,5 @@
 import { Movie } from '@/types';
+import Image from 'next/image';
 
 async function getData(id: string) {
   const res = await fetch(
@@ -21,7 +22,7 @@ export default async function MovieDetail({
   params: { slug: string };
 }) {
   const data: Movie = await getData(params.slug);
-  console.log(data);
+  // console.log(data);
   const {
     Poster: imgUrl,
     Title: title,
@@ -43,12 +44,15 @@ export default async function MovieDetail({
         <div className='max-w-[1024px] px-6 mx-auto'>
           <div className='flex items-start gap-x-10'>
             <div className='w-[240px] rounded-xl overflow-hidden shrink-0'>
-              <img
+              <Image
                 className='object-fill w-full'
                 src={
                   imgUrl === 'N/A' ? 'https://placehold.co/300x444/png' : imgUrl
                 }
-                alt=''
+                width={240}
+                height={300}
+                alt={title}
+                priority
               />
             </div>
             <div className='flex flex-col gap-y-5 pt-4'>
@@ -58,19 +62,28 @@ export default async function MovieDetail({
                   ratings.map((rating, idx) => {
                     if (rating.Source === 'Internet Movie Database') {
                       return (
-                        <div className='inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'>
+                        <div
+                          key={idx}
+                          className='inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'
+                        >
                           imdb: {rating.Value}
                         </div>
                       );
                     } else if (rating.Source === 'Rotten Tomatoes') {
                       return (
-                        <div className='inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'>
+                        <div
+                          key={idx}
+                          className='inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'
+                        >
                           rotten tomato: {rating.Value}
                         </div>
                       );
                     } else if (rating.Source === 'Metacritic') {
                       return (
-                        <div className='inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'>
+                        <div
+                          key={idx}
+                          className='inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'
+                        >
                           metascore: {rating.Value}
                         </div>
                       );
