@@ -14,7 +14,7 @@ export default function MovieList() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&${searchQuery}`
+          `${process.env.NEXT_PUBLIC_API_URL}/?${searchQuery}`
         );
         const data = await response.json();
         if (data.Response === 'False') {
