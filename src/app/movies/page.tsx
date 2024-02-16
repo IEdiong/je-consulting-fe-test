@@ -35,27 +35,29 @@ export default function MovieList() {
   }, [searchQuery]);
 
   return (
-    <main className='flex min-h-screen flex-col gap-y-3 justify-start px-4 sm:px-10 max-w-[1280px] mx-auto'>
-      <h1>Movie search results</h1>
-      <div className='grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-x-10 gap-y-[73px] justify-between'>
-        {loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>Movie could not be found. Search for another movie.</p>
-        ) : (
-          moviesData &&
-          moviesData.map((movie: Movie) => (
-            <MovieCard
-              key={movie.imdbID}
-              id={movie.imdbID}
-              title={movie.Title}
-              year={movie.Year}
-              type={movie.Type}
-              imgUrl={movie.Poster}
-            />
-          ))
-        )}
-      </div>
+    <main className='flex min-h-screen flex-col gap-y-3 justify-start px-4 sm:px-10 pb-10 max-w-[1280px] mx-auto'>
+      <h1 className='pt-7 font-semibold text-3xl'>Movie search results</h1>
+      {loading ? (
+        <p className='flex-1 flex text-lg mt-10 justify-center'>Loading...</p>
+      ) : error ? (
+        <p className='flex-1 flex text-lg mt-10 justify-center'>
+          Movie could not be found. Search for another movie.
+        </p>
+      ) : (
+        <div className='grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-x-10 gap-y-[73px] justify-between'>
+          {moviesData &&
+            moviesData.map((movie: Movie) => (
+              <MovieCard
+                key={movie.imdbID}
+                id={movie.imdbID}
+                title={movie.Title}
+                year={movie.Year}
+                type={movie.Type}
+                imgUrl={movie.Poster}
+              />
+            ))}
+        </div>
+      )}
     </main>
   );
 }

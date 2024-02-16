@@ -42,7 +42,7 @@ export default async function MovieDetail({
     <main className='min-h-screen relative'>
       <div className='pt-[240px]'>
         <div className='max-w-[1024px] px-6 mx-auto'>
-          <div className='flex items-start gap-x-10'>
+          <div className='md:flex md:items-start md:gap-x-10'>
             <div className='w-[240px] rounded-xl overflow-hidden shrink-0'>
               <Image
                 className='object-fill w-full'
@@ -55,7 +55,7 @@ export default async function MovieDetail({
                 priority
               />
             </div>
-            <div className='flex flex-col gap-y-5 pt-4'>
+            <div className='flex flex-col gap-y-5 pt-4 mt-9 md:mt-0'>
               <h1 className='text-3xl font-semibold'>{title}</h1>
               <div className='flex gap-x-2'>
                 {ratings.length > 0 &&
@@ -94,7 +94,7 @@ export default async function MovieDetail({
                 <h2 className='font-semibold'>Overview:</h2>
                 <p className='mt-2'>{overview}</p>
               </div>
-              <div className='flex items-start gap-x-20'>
+              <div className='md:flex md:items-start md:gap-x-20'>
                 <ul>
                   <li>
                     <span className='font-semibold'>Rated: </span>
