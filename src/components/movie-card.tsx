@@ -19,7 +19,7 @@ export default function MovieCard({
   return (
     <Link
       href={`/movies/${id}`}
-      className='w-full bg-white rounded-xl overflow-hidden'
+      className='w-full bg-white rounded-xl overflow-hidden group hover:shadow-xl'
     >
       <div className='h-[444px] overflow-hidden relative'>
         <Image
@@ -33,7 +33,9 @@ export default function MovieCard({
       </div>
       <div className='p-4'>
         <p className='text-sm text-gray-700'>{year}</p>
-        <h2 className='mt-2 text-lg font-bold'>{title}</h2>
+        <h2 className='mt-2 text-lg font-bold group-hover:text-yellow-500'>
+          {title}
+        </h2>
         <span className='mt-6 inline-block bg-slate-200 px-3 py-1 uppercase text-xs rounded-full font-semibold'>
           {type}
         </span>

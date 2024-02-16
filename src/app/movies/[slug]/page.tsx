@@ -40,7 +40,7 @@ export default async function MovieDetail({
 
   return (
     <main className='min-h-screen relative'>
-      <div className='pt-[240px]'>
+      <div className='py-11 md:pt-[240px]'>
         <div className='max-w-[1024px] px-6 mx-auto'>
           <div className='md:flex md:items-start md:gap-x-10'>
             <div className='w-[240px] rounded-xl overflow-hidden shrink-0'>
@@ -57,7 +57,7 @@ export default async function MovieDetail({
             </div>
             <div className='flex flex-col gap-y-5 pt-4 mt-9 md:mt-0'>
               <h1 className='text-3xl font-semibold'>{title}</h1>
-              <div className='flex gap-x-2'>
+              <div className='flex gap-x-2 flex-wrap'>
                 {ratings.length > 0 &&
                   ratings.map((rating, idx) => {
                     if (rating.Source === 'Internet Movie Database') {

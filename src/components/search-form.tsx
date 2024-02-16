@@ -86,7 +86,7 @@ export default function SearchForm({
       {showRecentSearch && recentSearchQueries.length > 0 && (
         <ol
           data-testid='recent-searches'
-          className='absolute top-20 p-2 rounded-3xl bg-white w-[700px] flex flex-col gap-y-1'
+          className='absolute top-20 p-2 rounded-3xl bg-white w-recent-search sm:w-recent-search-sm md:w-[700px] flex flex-col gap-y-1'
         >
           {recentSearchQueries &&
             recentSearchQueries.reverse().map((query: string, idx: number) => (

@@ -32,3 +32,11 @@ input[type='search']::-webkit-search-results-button,
 input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
+
+.w-recent-search {
+  width: calc(100vw - 16px);
+}
+
+.w-recent-search-sm {
+  width: calc(100vw - 48px);
+}
