@@ -57,7 +57,7 @@ export default async function MovieDetail({
             </div>
             <div className='flex flex-col gap-y-5 pt-4 mt-9 md:mt-0'>
               <h1 className='text-3xl font-semibold'>{title}</h1>
-              <div className='flex gap-x-2 flex-wrap'>
+              <div className='flex gap-2 flex-wrap'>
                 {ratings.length > 0 &&
                   ratings.map((rating, idx) => {
                     if (rating.Source === 'Internet Movie Database') {
