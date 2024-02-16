@@ -64,9 +64,13 @@ export default function SearchForm({
   };
 
   return (
-    <form role='search' onSubmit={handleSubmit} className='relative w-[700px]'>
+    <form
+      role='search'
+      onSubmit={handleSubmit}
+      className='relative w-full md:w-[700px]'
+    >
       <input
-        className='w-[700px] h-16 rounded-full ps-10 focus:outline-none focus-visible:outline-yellow-500 focus-visible:outline-offset-4 focus-visible:outline-2'
+        className='w-full pe-32 md:w-[700px] h-16 rounded-full ps-10 focus:outline-none focus-visible:outline-yellow-500 focus-visible:outline-offset-4 focus-visible:outline-2'
         type='search'
         name='search'
         placeholder='Search for a movie'
